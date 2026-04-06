@@ -1,0 +1,71 @@
+2026-04-06 12:13:53,686 | INFO | Starting: Building Spark Session
+2026-04-06 12:13:55,794 | INFO | Completed: Building Spark Session
+2026-04-06 12:13:55,795 | INFO | Starting: Reading /opt/data/olist_orders_dataset.csv File
+2026-04-06 12:14:03,001 | INFO | Completed: Reading /opt/data/olist_orders_dataset.csv File
+2026-04-06 12:14:03,002 | INFO | Starting: Reading /opt/data/olist_order_items_dataset.csv File
+2026-04-06 12:14:04,003 | INFO | Completed: Reading /opt/data/olist_order_items_dataset.csv File
+2026-04-06 12:14:04,004 | INFO | Starting: Reading /opt/data/olist_customers_dataset.csv File
+2026-04-06 12:14:04,633 | INFO | Completed: Reading /opt/data/olist_customers_dataset.csv File
+2026-04-06 12:14:04,636 | INFO | Starting: Reading /opt/data/olist_order_payments_dataset.csv File
+2026-04-06 12:14:05,537 | INFO | Completed: Reading /opt/data/olist_order_payments_dataset.csv File
+2026-04-06 12:14:05,538 | INFO | Starting: Reading /opt/data/olist_order_reviews_dataset.csv File
+2026-04-06 12:14:06,152 | INFO | Completed: Reading /opt/data/olist_order_reviews_dataset.csv File
+2026-04-06 12:14:06,152 | INFO | Starting: Reading /opt/data/olist_products_dataset.csv File
+2026-04-06 12:14:06,589 | INFO | Completed: Reading /opt/data/olist_products_dataset.csv File
+2026-04-06 12:14:06,590 | INFO | Starting: Selecting required columns from dataframes
+2026-04-06 12:14:06,670 | INFO | Completed: Selecting required columns from dataframes
+2026-04-06 12:14:06,670 | INFO | Starting: Data Cleaning , Droping Nulls and Duplicates
+2026-04-06 12:14:06,749 | INFO | Completed: Data Cleaning , Droping Nulls and Duplicates
+2026-04-06 12:14:06,750 | INFO | Starting: Data Enrichment (JOINS)
+2026-04-06 12:14:06,825 | INFO | Completed: Data Enrichment (JOINS)
+2026-04-06 12:14:06,826 | INFO | Starting: Feature Engineering
+2026-04-06 12:14:06,912 | INFO | Completed: Feature Engineering
+2026-04-06 12:14:06,913 | INFO | Starting: Order-level aggregation 
+2026-04-06 12:14:07,036 | INFO | Completed: Order-level aggregation 
+2026-04-06 12:14:07,037 | INFO | Starting: Calculating Fact table
+2026-04-06 12:14:07,073 | INFO | Completed: Calculating Fact table
+2026-04-06 12:14:07,074 | INFO | Starting: Calculating Customer analytics
+2026-04-06 12:14:07,098 | INFO | Completed: Calculating Customer analytics
+2026-04-06 12:14:07,099 | INFO | Starting: Calculating Product performance
+2026-04-06 12:14:07,124 | INFO | Completed: Calculating Product performance
+2026-04-06 12:14:07,125 | INFO | Starting: Calculating Delivery performance
+2026-04-06 12:14:07,155 | INFO | Completed: Calculating Delivery performance
+2026-04-06 12:14:07,155 | INFO | Starting: Calculating Review insights
+2026-04-06 12:14:07,214 | INFO | Completed: Calculating Review insights
+2026-04-06 12:14:07,215 | INFO | Starting: Calculating Payment analytics
+2026-04-06 12:14:07,254 | INFO | Completed: Calculating Payment analytics
+2026-04-06 12:14:07,254 | INFO | Starting: Calculating Order payment breakdown
+2026-04-06 12:14:07,270 | INFO | Completed: Calculating Order payment breakdown
+2026-04-06 12:14:07,270 | INFO | Starting: Calculating Product category performance
+2026-04-06 12:14:07,303 | INFO | Completed: Calculating Product category performance
+2026-04-06 12:14:07,303 | INFO | Starting: Calculating Seller performance
+2026-04-06 12:14:07,341 | INFO | Completed: Calculating Seller performance
+2026-04-06 12:14:07,344 | INFO | Starting: Calculating Shipping cost analysis
+2026-04-06 12:14:07,413 | INFO | Completed: Calculating Shipping cost analysis
+2026-04-06 12:14:07,417 | INFO | Starting: Calculating Order fulfillment analysis
+2026-04-06 12:14:07,448 | INFO | Completed: Calculating Order fulfillment analysis
+2026-04-06 12:14:07,449 | INFO | Starting: Writing fact_sales_daily to MySQL
+2026-04-06 12:14:16,364 | INFO | Completed: Writing fact_sales_daily to MySQL
+2026-04-06 12:14:16,365 | INFO | Starting: Writing customer_analytics to MySQL
+2026-04-06 12:14:26,800 | INFO | Completed: Writing customer_analytics to MySQL
+2026-04-06 12:14:26,801 | INFO | Starting: Writing product_performance to MySQL
+2026-04-06 12:14:33,436 | INFO | Completed: Writing product_performance to MySQL
+2026-04-06 12:14:33,437 | INFO | Starting: Writing delivery_performance to MySQL
+2026-04-06 12:14:39,908 | INFO | Completed: Writing delivery_performance to MySQL
+2026-04-06 12:14:39,911 | INFO | Starting: Writing review_insights to MySQL
+2026-04-06 12:14:42,365 | INFO | Completed: Writing review_insights to MySQL
+2026-04-06 12:14:42,367 | INFO | Starting: Writing payment_analytics to MySQL
+2026-04-06 12:14:44,905 | INFO | Completed: Writing payment_analytics to MySQL
+2026-04-06 12:14:44,906 | INFO | Starting: Writing order_payment_breakdown to MySQL
+2026-04-06 12:14:52,997 | INFO | Completed: Writing order_payment_breakdown to MySQL
+2026-04-06 12:14:52,998 | INFO | Starting: Writing product_category_performance to MySQL
+2026-04-06 12:14:55,838 | INFO | Completed: Writing product_category_performance to MySQL
+2026-04-06 12:14:55,889 | INFO | Starting: Writing seller_performance to MySQL
+2026-04-06 12:14:58,796 | INFO | Completed: Writing seller_performance to MySQL
+2026-04-06 12:14:58,796 | INFO | Starting: Writing shipping_cost_analysis to MySQL
+2026-04-06 12:15:01,091 | INFO | Completed: Writing shipping_cost_analysis to MySQL
+2026-04-06 12:15:01,092 | INFO | Starting: Writing order_fulfillment_analysis to MySQL
+2026-04-06 12:15:07,192 | INFO | Completed: Writing order_fulfillment_analysis to MySQL
+2026-04-06 12:15:07,192 | INFO | Starting: Stopping Spark Session
+2026-04-06 12:15:07,692 | INFO | Completed: Stopping Spark Session
+2026-04-06 12:15:07,696 | INFO | Closing down clientserver connection
