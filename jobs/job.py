@@ -12,7 +12,7 @@ PRODUCTS_FILE = "/opt/data/olist_products_dataset.csv"
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s | %(levelname)s | %(message)s",
-    filename="/opt/data/logs/etl.log",   # 👈 file path
+    filename="/opt/spark/logs/etl.log",   # 👈 file path
     filemode="a"  # append mode
 )
 

@@ -17,6 +17,7 @@ services:
       - spark-events:/opt/spark/events
       - ./input_files:/opt/data
       - ./jobs:/opt/jobs
+      - ./logs:/opt/spark/logs
 
   spark-worker:
     image: my_first_spark
@@ -30,6 +31,7 @@ services:
       - spark-events:/opt/spark/events
       - ./input_files:/opt/data
       - ./jobs:/opt/jobs
+      - ./logs:/opt/spark/logs
 
   spark-history-server:
     image: my_first_spark
@@ -41,6 +43,7 @@ services:
     command: -c "/opt/spark/sbin/start-history-server.sh; tail -f /dev/null"
     volumes:
       - spark-events:/opt/spark/events
+      - ./logs:/opt/spark/logs
     ports:
       - '18080:18080'
 
