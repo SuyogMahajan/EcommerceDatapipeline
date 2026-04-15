@@ -1,0 +1,32 @@
+/opt/spark/bin/load-spark-env.sh: line 68: ps: command not found
+Spark Command: /usr/lib/jvm/java-17-openjdk-amd64/bin/java -cp /opt/spark/conf/:/opt/spark/jars/* -Xmx1g org.apache.spark.deploy.master.Master --host spark-master --port 7077 --webui-port 8080
+========================================
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+26/04/15 17:28:42 INFO Master: Started daemon with process name: 15@7c75d3cd0048
+26/04/15 17:28:42 INFO SignalUtils: Registering signal handler for TERM
+26/04/15 17:28:42 INFO SignalUtils: Registering signal handler for HUP
+26/04/15 17:28:42 INFO SignalUtils: Registering signal handler for INT
+26/04/15 17:28:42 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+26/04/15 17:28:42 INFO SecurityManager: Changing view acls to: root
+26/04/15 17:28:42 INFO SecurityManager: Changing modify acls to: root
+26/04/15 17:28:42 INFO SecurityManager: Changing view acls groups to: 
+26/04/15 17:28:42 INFO SecurityManager: Changing modify acls groups to: 
+26/04/15 17:28:42 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: root; groups with view permissions: EMPTY; users with modify permissions: root; groups with modify permissions: EMPTY
+26/04/15 17:28:43 INFO Utils: Successfully started service 'sparkMaster' on port 7077.
+26/04/15 17:28:43 INFO Master: Starting Spark master at spark://spark-master:7077
+26/04/15 17:28:43 INFO Master: Running Spark version 3.5.0
+26/04/15 17:28:43 INFO JettyUtils: Start Jetty 0.0.0.0:8080 for MasterUI
+26/04/15 17:28:43 INFO Utils: Successfully started service 'MasterUI' on port 8080.
+26/04/15 17:28:43 INFO MasterWebUI: Bound MasterWebUI to 0.0.0.0, and started at http://7c75d3cd0048:8080
+26/04/15 17:28:43 INFO Master: I have been elected leader! New state: ALIVE
+26/04/15 17:28:43 INFO Master: Registering worker 172.18.0.5:37753 with 20 cores, 6.6 GiB RAM
+26/04/15 17:29:32 INFO Master: Registering app ecomairflowspark
+26/04/15 17:29:32 INFO Master: Registered app ecomairflowspark with ID app-20260415172932-0000
+26/04/15 17:29:32 INFO Master: Start scheduling for app app-20260415172932-0000 with rpId: 0
+26/04/15 17:29:32 INFO Master: Launching executor app-20260415172932-0000/0 on worker worker-20260415172843-172.18.0.5-37753
+26/04/15 17:29:32 INFO Master: Start scheduling for app app-20260415172932-0000 with rpId: 0
+26/04/15 17:30:46 INFO Master: Received unregister request from application app-20260415172932-0000
+26/04/15 17:30:46 INFO Master: Removing app app-20260415172932-0000
+26/04/15 17:30:46 INFO Master: 172.18.0.8:39234 got disassociated, removing it.
+26/04/15 17:30:46 INFO Master: c1d676d159d6:44157 got disassociated, removing it.
+26/04/15 17:30:46 WARN Master: Got status update for unknown executor app-20260415172932-0000/0

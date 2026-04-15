@@ -1,0 +1,70 @@
+Spark Command: /usr/lib/jvm/java-17-openjdk-amd64/bin/java -cp /opt/spark/conf/:/opt/spark/jars/* -Xmx1g org.apache.spark.deploy.worker.Worker --webui-port 8081 spark://spark-master:7077
+========================================
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+26/04/14 18:21:49 INFO Worker: Started daemon with process name: 17@cecb1ad80ede
+26/04/14 18:21:49 INFO SignalUtils: Registering signal handler for TERM
+26/04/14 18:21:49 INFO SignalUtils: Registering signal handler for HUP
+26/04/14 18:21:49 INFO SignalUtils: Registering signal handler for INT
+26/04/14 18:21:49 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+26/04/14 18:21:50 INFO SecurityManager: Changing view acls to: root
+26/04/14 18:21:50 INFO SecurityManager: Changing modify acls to: root
+26/04/14 18:21:50 INFO SecurityManager: Changing view acls groups to: 
+26/04/14 18:21:50 INFO SecurityManager: Changing modify acls groups to: 
+26/04/14 18:21:50 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: root; groups with view permissions: EMPTY; users with modify permissions: root; groups with modify permissions: EMPTY
+26/04/14 18:21:50 INFO Utils: Successfully started service 'sparkWorker' on port 42211.
+26/04/14 18:21:50 INFO Worker: Worker decommissioning not enabled.
+26/04/14 18:21:50 INFO Worker: Starting Spark worker 172.18.0.5:42211 with 20 cores, 6.6 GiB RAM
+26/04/14 18:21:50 INFO Worker: Running Spark version 3.5.8
+26/04/14 18:21:50 INFO Worker: Spark home: /opt/spark
+26/04/14 18:21:50 INFO ResourceUtils: ==============================================================
+26/04/14 18:21:50 INFO ResourceUtils: No custom resources configured for spark.worker.
+26/04/14 18:21:50 INFO ResourceUtils: ==============================================================
+26/04/14 18:21:50 INFO JettyUtils: Start Jetty 0.0.0.0:8081 for WorkerUI
+26/04/14 18:21:50 INFO Utils: Successfully started service 'WorkerUI' on port 8081.
+26/04/14 18:21:50 INFO WorkerWebUI: Bound WorkerWebUI to 0.0.0.0, and started at http://cecb1ad80ede:8081
+26/04/14 18:21:50 INFO Worker: Connecting to master spark-master:7077...
+26/04/14 18:21:50 INFO TransportClientFactory: Successfully created connection to spark-master/172.18.0.7:7077 after 40 ms (0 ms spent in bootstraps)
+26/04/14 18:21:51 INFO Worker: Successfully registered with master spark://spark-master:7077
+26/04/14 18:26:01 INFO Worker: spark-master:7077 Disassociated !
+26/04/14 18:26:01 ERROR Worker: Connection to master failed! Waiting for master to reconnect...
+26/04/14 18:26:01 INFO Worker: spark-master:7077 Disassociated !
+26/04/14 18:26:01 INFO Worker: Connecting to master spark-master:7077...
+26/04/14 18:26:01 ERROR Worker: Connection to master failed! Waiting for master to reconnect...
+26/04/14 18:26:01 INFO Worker: Not spawning another attempt to register with the master, since there is an attempt scheduled already.
+26/04/14 18:26:01 INFO TransportClientFactory: Found inactive connection to spark-master/172.18.0.7:7077, creating a new one.
+26/04/14 18:26:01 WARN Worker: Failed to connect to master spark-master:7077
+org.apache.spark.SparkException: Exception thrown in awaitResult: 
+	at org.apache.spark.util.SparkThreadUtils$.awaitResult(SparkThreadUtils.scala:56)
+	at org.apache.spark.util.ThreadUtils$.awaitResult(ThreadUtils.scala:310)
+	at org.apache.spark.rpc.RpcTimeout.awaitResult(RpcTimeout.scala:75)
+	at org.apache.spark.rpc.RpcEnv.setupEndpointRefByURI(RpcEnv.scala:102)
+	at org.apache.spark.rpc.RpcEnv.setupEndpointRef(RpcEnv.scala:110)
+	at org.apache.spark.deploy.worker.Worker$$anon$1.run(Worker.scala:313)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.io.IOException: Failed to connect to spark-master/172.18.0.7:7077
+	at org.apache.spark.network.client.TransportClientFactory.createClient(TransportClientFactory.java:294)
+	at org.apache.spark.network.client.TransportClientFactory.createClient(TransportClientFactory.java:214)
+	at org.apache.spark.network.client.TransportClientFactory.createClient(TransportClientFactory.java:226)
+	at org.apache.spark.rpc.netty.NettyRpcEnv.createClient(NettyRpcEnv.scala:204)
+	at org.apache.spark.rpc.netty.Outbox$$anon$1.call(Outbox.scala:202)
+	at org.apache.spark.rpc.netty.Outbox$$anon$1.call(Outbox.scala:198)
+	... 4 more
+Caused by: io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: spark-master/172.18.0.7:7077
+Caused by: java.net.ConnectException: Connection refused
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:684)
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:946)
+	at io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:337)
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:334)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:840)

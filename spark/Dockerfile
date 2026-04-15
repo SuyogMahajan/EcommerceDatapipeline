@@ -13,18 +13,19 @@ ENV SPARK_HOME="/opt/spark"
 ENV JAVA_HOME="/usr/lib/jvm/java-17-openjdk-amd64"
 
 # whenever we run a command on bash system check here , here are all the folders who holds different binaries
-ENV PATH="${JAVA_HOME}:${SPARK_HOME}/bin:${SPARK_HOME}/sbin:${PATH}"
+ENV PATH="${JAVA_HOME}/bin:${SPARK_HOME}/bin:${SPARK_HOME}/sbin:${PATH}"
 
+RUN mkdir -p /opt/spark/logs && chmod -R 777 /opt/spark/logs
 # -p says, make parent directories as well if needed
 RUN mkdir -p ${SPARK_HOME}
 
 # Fetch latest spark 3.5.x version and download the appropriate binary file
-RUN curl -s https://dlcdn.apache.org/spark/ | grep -oP 'spark-3\.5\.[0-9]+' | sort -V | tail -1 | \
-    xargs -I {} curl -O https://dlcdn.apache.org/spark/{}/{}-bin-hadoop3.tgz
-
+RUN curl -L -o spark.tgz https://archive.apache.org/dist/spark/spark-3.5.0/spark-3.5.0-bin-hadoop3.tgz && \
+    tar -xzf spark.tgz -C ${SPARK_HOME} --strip-components=1 && \
+    rm spark.tgz
  # Unpack the file and cleanup the binary file
-RUN tar xvzf spark-3.5.*-bin-hadoop*.tgz --directory ${SPARK_HOME} --strip-components 1 \
-    && rm -rf spark-3.5.*-bin-hadoop*.tgz
+#RUN tar xvzf spark-3.5.*-bin-hadoop*.tgz --directory ${SPARK_HOME} --strip-components 1 \
+#    && rm -rf spark-3.5.*-bin-hadoop*.tgz
 
 
 RUN curl -L -o /opt/spark/jars/mysql-connector-j-8.0.33.jar \

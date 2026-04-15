@@ -1,0 +1,43 @@
+/opt/spark/bin/load-spark-env.sh: line 68: ps: command not found
+Spark Command: /usr/lib/jvm/java-17-openjdk-amd64/bin/java -cp /opt/spark/conf/:/opt/spark/jars/* -Xmx1g org.apache.spark.deploy.worker.Worker --webui-port 8081 spark://spark-master:7077
+========================================
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+26/04/15 17:28:42 INFO Worker: Started daemon with process name: 15@d94c48e1ee0b
+26/04/15 17:28:42 INFO SignalUtils: Registering signal handler for TERM
+26/04/15 17:28:42 INFO SignalUtils: Registering signal handler for HUP
+26/04/15 17:28:42 INFO SignalUtils: Registering signal handler for INT
+26/04/15 17:28:42 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+26/04/15 17:28:42 INFO SecurityManager: Changing view acls to: root
+26/04/15 17:28:42 INFO SecurityManager: Changing modify acls to: root
+26/04/15 17:28:42 INFO SecurityManager: Changing view acls groups to: 
+26/04/15 17:28:42 INFO SecurityManager: Changing modify acls groups to: 
+26/04/15 17:28:42 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: root; groups with view permissions: EMPTY; users with modify permissions: root; groups with modify permissions: EMPTY
+26/04/15 17:28:43 INFO Utils: Successfully started service 'sparkWorker' on port 37753.
+26/04/15 17:28:43 INFO Worker: Worker decommissioning not enabled.
+26/04/15 17:28:43 INFO Worker: Starting Spark worker 172.18.0.5:37753 with 20 cores, 6.6 GiB RAM
+26/04/15 17:28:43 INFO Worker: Running Spark version 3.5.0
+26/04/15 17:28:43 INFO Worker: Spark home: /opt/spark
+26/04/15 17:28:43 INFO ResourceUtils: ==============================================================
+26/04/15 17:28:43 INFO ResourceUtils: No custom resources configured for spark.worker.
+26/04/15 17:28:43 INFO ResourceUtils: ==============================================================
+26/04/15 17:28:43 INFO JettyUtils: Start Jetty 0.0.0.0:8081 for WorkerUI
+26/04/15 17:28:43 INFO Utils: Successfully started service 'WorkerUI' on port 8081.
+26/04/15 17:28:43 INFO WorkerWebUI: Bound WorkerWebUI to 0.0.0.0, and started at http://d94c48e1ee0b:8081
+26/04/15 17:28:43 INFO Worker: Connecting to master spark-master:7077...
+26/04/15 17:28:43 INFO TransportClientFactory: Successfully created connection to spark-master/172.18.0.6:7077 after 36 ms (0 ms spent in bootstraps)
+26/04/15 17:28:43 INFO Worker: Successfully registered with master spark://spark-master:7077
+26/04/15 17:29:32 INFO Worker: Asked to launch executor app-20260415172932-0000/0 for ecomairflowspark
+26/04/15 17:29:32 INFO SecurityManager: Changing view acls to: root
+26/04/15 17:29:32 INFO SecurityManager: Changing modify acls to: root
+26/04/15 17:29:32 INFO SecurityManager: Changing view acls groups to: 
+26/04/15 17:29:32 INFO SecurityManager: Changing modify acls groups to: 
+26/04/15 17:29:32 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: root; groups with view permissions: EMPTY; users with modify permissions: root; groups with modify permissions: EMPTY
+26/04/15 17:29:32 INFO ExecutorRunner: Launch command: "/usr/lib/jvm/java-17-openjdk-amd64/bin/java" "-cp" "/opt/spark/conf/:/opt/spark/jars/*" "-Xmx1024M" "-Dspark.driver.port=44157" "-Djava.net.preferIPv6Addresses=false" "-XX:+IgnoreUnrecognizedVMOptions" "--add-opens=java.base/java.lang=ALL-UNNAMED" "--add-opens=java.base/java.lang.invoke=ALL-UNNAMED" "--add-opens=java.base/java.lang.reflect=ALL-UNNAMED" "--add-opens=java.base/java.io=ALL-UNNAMED" "--add-opens=java.base/java.net=ALL-UNNAMED" "--add-opens=java.base/java.nio=ALL-UNNAMED" "--add-opens=java.base/java.util=ALL-UNNAMED" "--add-opens=java.base/java.util.concurrent=ALL-UNNAMED" "--add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED" "--add-opens=java.base/sun.nio.ch=ALL-UNNAMED" "--add-opens=java.base/sun.nio.cs=ALL-UNNAMED" "--add-opens=java.base/sun.security.action=ALL-UNNAMED" "--add-opens=java.base/sun.util.calendar=ALL-UNNAMED" "--add-opens=java.security.jgss/sun.security.krb5=ALL-UNNAMED" "-Djdk.reflect.useDirectMethodHandle=false" "org.apache.spark.executor.CoarseGrainedExecutorBackend" "--driver-url" "spark://CoarseGrainedScheduler@c1d676d159d6:44157" "--executor-id" "0" "--hostname" "172.18.0.5" "--cores" "20" "--app-id" "app-20260415172932-0000" "--worker-url" "spark://Worker@172.18.0.5:37753" "--resourceProfileId" "0"
+26/04/15 17:30:46 INFO Worker: Asked to kill executor app-20260415172932-0000/0
+26/04/15 17:30:46 INFO ExecutorRunner: Runner thread for executor app-20260415172932-0000/0 interrupted
+26/04/15 17:30:46 INFO ExecutorRunner: Killing process!
+26/04/15 17:30:46 INFO Worker: Executor app-20260415172932-0000/0 finished with state KILLED exitStatus 143
+26/04/15 17:30:46 INFO ExternalShuffleBlockResolver: Clean up non-shuffle and non-RDD files associated with the finished executor 0
+26/04/15 17:30:46 INFO ExternalShuffleBlockResolver: Executor is not registered (appId=app-20260415172932-0000, execId=0)
+26/04/15 17:30:46 INFO ExternalShuffleBlockResolver: Application app-20260415172932-0000 removed, cleanupLocalDirs = true
+26/04/15 17:30:46 INFO Worker: Cleaning up local directories for application app-20260415172932-0000

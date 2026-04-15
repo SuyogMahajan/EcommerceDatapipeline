@@ -2,53 +2,104 @@ networks:
   sparkpg_network:
 
 services:
+
+  # ---------------- DATABASE ----------------
+  postgres:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_DB: airflow
+    networks:
+      - sparkpg_network
+
+  # ---------------- AIRFLOW ----------------
+  airflow-webserver:
+    build: ./airflow
+    depends_on:
+      - postgres
+    environment:
+      - AIRFLOW__CORE__EXECUTOR=LocalExecutor
+      - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:airflow@postgres/airflow
+      - AIRFLOW__CORE__FERNET_KEY=x7K9lJ3k8wQf8FJjP2Xc8K9kL0nVqR5sT6uYzA1bC2D=
+      - AIRFLOW__CORE__LOAD_EXAMPLES=False
+      - AIRFLOW__WEBSERVER__SECRET_KEY=supersecret123
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./input_files:/opt/data
+      - ./jobs:/opt/jobs
+      - ./logs:/opt/spark/logs
+
+    ports:
+      - "8080:8080"
+    networks:
+      - sparkpg_network
+    command: webserver
+
+  airflow-scheduler:
+    build: ./airflow
+    depends_on:
+      - airflow-webserver
+    environment:
+      - AIRFLOW__CORE__EXECUTOR=LocalExecutor
+      - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:airflow@postgres/airflow
+      - AIRFLOW__CORE__FERNET_KEY=x7K9lJ3k8wQf8FJjP2Xc8K9kL0nVqR5sT6uYzA1bC2D=
+      - AIRFLOW__WEBSERVER__SECRET_KEY=supersecret123
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./input_files:/opt/data
+      - ./jobs:/opt/jobs
+      - ./logs:/opt/spark/logs
+
+    networks:
+      - sparkpg_network
+    command: scheduler
+
+  # ---------------- SPARK ----------------
   spark-master:
-    image: my_first_spark
-    build: .
+    build: ./spark
     container_name: spark-master
     networks:
       - sparkpg_network
     entrypoint: /bin/bash
     command: -c "/opt/spark/sbin/start-master.sh; tail -f /dev/null"
     ports:
-      - '8080:8080'
-      - '4040:4040'
+      - "8081:8080"
+      - "4040:4040"
     volumes:
-      - spark-events:/opt/spark/events
       - ./input_files:/opt/data
       - ./jobs:/opt/jobs
       - ./logs:/opt/spark/logs
+      - ./logs:/opt/spark/logs
+
 
   spark-worker:
-    image: my_first_spark
-    build: .
-    container_name: spark-worker1
+    build: ./spark
+    container_name: spark-worker
     networks:
       - sparkpg_network
     entrypoint: /bin/bash
-    command: -c "/opt/spark/sbin/start-worker.sh  spark://spark-master:7077; tail -f /dev/null"
+    command: -c "/opt/spark/sbin/start-worker.sh spark://spark-master:7077; tail -f /dev/null"
     volumes:
-      - spark-events:/opt/spark/events
       - ./input_files:/opt/data
       - ./jobs:/opt/jobs
       - ./logs:/opt/spark/logs
 
   spark-history-server:
-    image: my_first_spark
-    build: .
-    container_name: spark-history-server
+    build: ./spark
+    container_name: spark-history
     networks:
       - sparkpg_network
     entrypoint: /bin/bash
     command: -c "/opt/spark/sbin/start-history-server.sh; tail -f /dev/null"
-    volumes:
-      - spark-events:/opt/spark/events
-      - ./logs:/opt/spark/logs
     ports:
-      - '18080:18080'
+      - "18080:18080"
+    volumes:
+      - ./logs:/opt/spark/logs
 
+  # ---------------- MYSQL ----------------
   mysql:
-    image: mysql:latest
+    image: mysql:8
     container_name: mysql-db
     networks:
       - sparkpg_network
@@ -63,5 +114,4 @@ services:
       - mysql_ecom:/var/lib/mysql
 
 volumes:
-  spark-events:
   mysql_ecom:
